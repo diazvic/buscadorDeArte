@@ -1,0 +1,28 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100&family=Quicksand&display=swap");
+* {
+  margin: 0;
+  box-sizing: border-box;
+  padding: 0;
+}
+
+h1 {
+  display: flex;
+  justify-content: center;
+  font-family: "quicksand";
+  font-size: 35px;
+  padding: 10px;
+  color: white;
+}
+
+.titulo-principal {
+  height: 80px;
+  background-color: #ce2445;
+}
+
+.imagen-museo {
+  height: 550px;
+  background: url(.//assets/5101.jpeg);
+  background-position: top;
+}
+
+/*# sourceMappingURL=styles.css.map */
