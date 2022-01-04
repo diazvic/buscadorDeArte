@@ -1,0 +1,22 @@
+{
+  "name": "buscadordearte",
+  "version": "1.0.0",
+  "description": "proyecto",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/diazvic/buscadorDeArte.git"
+  },
+  "author": "Yanina Bucca y Victoria Diaz",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/diazvic/buscadorDeArte/issues"
+  },
+  "homepage": "https://github.com/diazvic/buscadorDeArte#readme",
+  "dependencies": {
+    "sass": "^1.45.2"
+  }
+}
