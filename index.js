@@ -9,11 +9,15 @@ const mostrarObras = (respuesta) => {
 			`
 	<div class="div-interior">
 		<div class= "imagen-card">
-			<img src="https://www.artic.edu/iiif/2/${curr.image_id}/full/843,/0/default.jpg" alt="">
+			<img src="https://www.artic.edu/iiif/2/${
+				curr.image_id
+			}/full/843,/0/default.jpg" alt="">
 		</div>
 	<div class="info-card">
 		<h2 class="titulo-obras">${curr.title}</h2>
-		<p class="autor-obras">${curr.artist_title}</p>
+		<p class="autor-obras">${
+			curr.artist_title == null ? "Unknown" : curr.artist_title
+		}</p>
 	</div>
 	</div>
 	`
@@ -22,7 +26,9 @@ const mostrarObras = (respuesta) => {
 	divContenedor.innerHTML = htmlCards;
 };
 
-fetch("https://api.artic.edu/api/v1/artworks")
+fetch(
+	"https://api.artic.edu/api/v1/artworks?fields=id,title,image_id,artist_title"
+)
 	.then((res) => res.json())
 	.then((data) => {
 		respuesta = data;
