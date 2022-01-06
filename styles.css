@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100&family=Quicksand&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@200;600&display=swap");
 * {
   margin: 0;
   box-sizing: border-box;
@@ -8,6 +9,7 @@
 h1 {
   display: flex;
   justify-content: center;
+  align-items: center;
   font-family: "quicksand";
   font-size: 35px;
   padding: 10px;
@@ -23,6 +25,82 @@ h1 {
   height: 550px;
   background: url(.//assets/5101.jpeg);
   background-position: top;
+}
+
+.div-contenedor {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  flex-wrap: wrap;
+}
+
+.div-interior {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: #072227;
+  width: 20%;
+  height: 90%;
+  margin: 10px;
+  padding: 15px;
+  box-shadow: 1px 0px 17px 5px rgba(201, 201, 201, 0.63);
+  -webkit-box-shadow: 1px 0px 17px 5px rgba(201, 201, 201, 0.63);
+  -moz-box-shadow: 1px 0px 17px 5px rgba(201, 201, 201, 0.63);
+}
+
+.div-interior:hover {
+  transform: scale(1.3);
+  transition-duration: 0.3s;
+  z-index: 7;
+}
+
+img {
+  width: 230px;
+  height: 300px;
+}
+
+.imagen-card {
+  background-color: aqua;
+  height: 300px;
+}
+
+.info-card {
+  height: 150px;
+  padding: 10px;
+  margin-top: 10px;
+}
+
+.titulo-obras {
+  font-family: "nunito";
+  font-size: 18px;
+  color: #fbfbfb;
+  font-weight: bold;
+  text-align: center;
+}
+
+.titulo-obras:hover {
+  color: #2d4263;
+  transition: 0.1s;
+}
+
+.autor-obras {
+  font-family: "nunito";
+  font-size: 15px;
+  color: #fbfbfb;
+  text-align: center;
+  padding: 25px;
+}
+
+.autor-obras:hover {
+  color: #2d4263;
+  transition: 0.1s;
+}
+
+.iconos-flechas {
+  height: 40px;
 }
 
 /*# sourceMappingURL=styles.css.map */
