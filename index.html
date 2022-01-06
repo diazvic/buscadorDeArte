@@ -7,6 +7,10 @@
 		<title>Buscador de Arte</title>
 	</head>
 	<link rel="stylesheet" href="styles.css" />
+	<script
+		src="https://kit.fontawesome.com/2b0ee45a2e.js"
+		crossorigin="anonymous"
+	></script>
 	<body>
 		<nav>
 			<div class="titulo-principal">
@@ -14,6 +18,44 @@
 			</div>
 			<div class="imagen-museo"></div>
 		</nav>
+		<form action="">
+			<label for="">
+				Busqueda
+				<input type="search" />
+			</label>
+			<label for="">TIPO</label>
+			<select name="obras">
+				<option value="titulo">Titulo</option>
+				<option value="autor">Autor</option>
+			</select>
+			<label for="">ORDEN</label>
+			<select name="ordenar">
+				<option value="titulo">A-Z</option>
+				<option value="autor">Z-A</option>
+				<option value="">Obras mas recientes</option>
+				<option value="">Obras mas antiguas</option>
+			</select>
+			<button>Buscar</button>
+		</form>
+		<section>
+			<h3>Resultados</h3>
+			<div class="div-contenedor"></div>
+			<div class="iconos-flechas">
+				<button>
+					<i class="fas fa-angle-double-left"></i>
+				</button>
+				<button>
+					<i class="fas fa-angle-left"></i>
+				</button>
+				<button>
+					<i class="fas fa-angle-right"></i>
+				</button>
+				<button>
+					<i class="fas fa-angle-double-right"></i>
+				</button>
+			</div>
+		</section>
+
 		<script src="index.js"></script>
 	</body>
 </html>
