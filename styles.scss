@@ -27,6 +27,44 @@ h1 {
 	background: url(.//assets/5101.jpeg);
 	background-position: top;
 }
+form{
+	background-color: white;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	padding: 10px;
+	margin: 50px;
+	.busqueda{
+		width: 50%;
+		input {
+			width: 90%;
+			border: transparent;
+			border-bottom: 2px solid #000;
+			font-size: 22px;
+			margin-left: 20px;
+		}
+	}
+	.filtros{
+		font-weight: bold;
+		width: 40%;
+		padding: 20px;
+		display: flex;
+		flex-direction: row;
+		select{
+		border: transparent;
+		border-radius: 5px;
+		}
+	}
+	.boton-buscar{
+		width: 60px;
+		height: 30px;
+		border: transparent;
+		border-radius: 10px;
+		color: white;
+		background-color: black;
+	}
+}
+
 .div-contenedor {
 	@include flex-center();
 	width: 100%;
