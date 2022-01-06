@@ -27,6 +27,44 @@ h1 {
   background-position: top;
 }
 
+form {
+  background-color: white;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 10px;
+  margin: 50px;
+}
+form .busqueda {
+  width: 50%;
+}
+form .busqueda input {
+  width: 90%;
+  border: transparent;
+  border-bottom: 2px solid #000;
+  font-size: 22px;
+  margin-left: 20px;
+}
+form .filtros {
+  font-weight: bold;
+  width: 40%;
+  padding: 20px;
+  display: flex;
+  flex-direction: row;
+}
+form .filtros select {
+  border: transparent;
+  border-radius: 5px;
+}
+form .boton-buscar {
+  width: 60px;
+  height: 30px;
+  border: transparent;
+  border-radius: 10px;
+  color: white;
+  background-color: black;
+}
+
 .div-contenedor {
   display: flex;
   justify-content: center;
