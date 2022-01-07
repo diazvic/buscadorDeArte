@@ -27,14 +27,14 @@ h1 {
 	background: url(.//assets/5101.jpeg);
 	background-position: top;
 }
-form{
+form {
 	background-color: white;
 	display: flex;
 	flex-direction: row;
 	align-items: center;
 	padding: 10px;
 	margin: 50px;
-	.busqueda{
+	.busqueda {
 		width: 50%;
 		input {
 			width: 90%;
@@ -44,18 +44,18 @@ form{
 			margin-left: 20px;
 		}
 	}
-	.filtros{
+	.filtros {
 		font-weight: bold;
 		width: 40%;
 		padding: 20px;
 		display: flex;
 		flex-direction: row;
-		select{
-		border: transparent;
-		border-radius: 5px;
+		select {
+			border: transparent;
+			border-radius: 5px;
 		}
 	}
-	.boton-buscar{
+	.boton-buscar {
 		width: 60px;
 		height: 30px;
 		border: transparent;
@@ -128,5 +128,19 @@ img {
 	transition: 0.1s;
 }
 .iconos-flechas {
+	height: 80px;
+	background-color: aquamarine;
+	@include flex-center();
+}
+.botones-flecha {
+	padding: 10px;
+	margin: 10px;
+	background-color: #072227;
+	border: none;
+	font-size: 20px;
+	width: 40px;
 	height: 40px;
+}
+.icono-paginado {
+	color: white;
 }
