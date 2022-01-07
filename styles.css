@@ -138,7 +138,25 @@ img {
 }
 
 .iconos-flechas {
+  height: 80px;
+  background-color: aquamarine;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.botones-flecha {
+  padding: 10px;
+  margin: 10px;
+  background-color: #072227;
+  border: none;
+  font-size: 20px;
+  width: 40px;
   height: 40px;
+}
+
+.icono-paginado {
+  color: white;
 }
 
 /*# sourceMappingURL=styles.css.map */
