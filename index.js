@@ -1,18 +1,19 @@
 //Elementos del DOM
-const proximaPagina = document.getElementById("proxima-pagina");
-const paginaAnterior = document.getElementById("pagina-anterior");
+const botonPrimeraPagina = document.getElementById("boton-primera-pagina");
+const botonPaginaAnterior = document.getElementById("pagina-anterior");
+const botonProximaPagina = document.getElementById("proxima-pagina");
+const botonUltimaPagina = document.getElementById("ultima-pagina");
 const iconoPaginado = document.querySelectorAll(".icono-paginado");
-const paginaActualBoton = document.getElementById("pagina-actual");
-const ultimaPaginaBoton = document.getElementById("ultima-pagina");
 
 let urlInicial =
 	"https://api.artic.edu/api/v1/artworks?fields=id,title,image_id,artist_title";
 let respuesta = "";
 let nextUrl = "";
 let prevUrl = "";
-let paginaActual = "";
+let paginaAnterior = "";
 let ultimaPagina = "";
-let primeraPagina = "";
+let primeraPagina =
+	"https://api.artic.edu/api/v1/artworks?page=1&fields=id,title,image_id,artist_title";
 
 const mostrarObras = (respuesta) => {
 	const divContenedor = document.querySelector(".div-contenedor");
@@ -46,23 +47,22 @@ const llamarApi = (url) => {
 		.then((data) => {
 			respuesta = data;
 			nextUrl = data.pagination.next_url;
-			prevUrl = data.pagination.prev_url;
-			paginaActual = data.pagination.current_page;
-			ultimaPagina = `https://api.artic.edu/api/v1/artworks?page=${data.pagination.total_pages}&fields=id,title,image_id,artist_title`;
-			// primeraPagina = 1;
+			prevUrl = `https://api.artic.edu/api/v1/artworks?page=${data.pagination.prev_url}&fields=id,title,image_id,artist_title`;
+			paginaAnterior = data.pagination.current_page;
+			ultimaPagina = `https://api.artic.edu/api/v1/artworks?page=${50}&fields=id,title,image_id,artist_title`;
 			mostrarObras(respuesta);
 		});
 };
 llamarApi(urlInicial);
-proximaPagina.onclick = () => {
-	llamarApi(nextUrl);
-};
-paginaAnterior.onclick = () => {
-	llamarApi(prevUrl);
-};
-paginaActualBoton.onclick = () => {
+botonPrimeraPagina.onclick = () => {
 	llamarApi(primeraPagina);
 };
-ultimaPaginaBoton.onclick = () => {
+botonPaginaAnterior.onclick = () => {
+	llamarApi(paginaAnterior);
+};
+botonProximaPagina.onclick = () => {
+	llamarApi(nextUrl);
+};
+botonUltimaPagina.onclick = () => {
 	llamarApi(ultimaPagina);
 };
