@@ -49,7 +49,7 @@ const llamarApi = (url) => {
 			nextUrl = data.pagination.next_url;
 			prevUrl = `https://api.artic.edu/api/v1/artworks?page=${data.pagination.prev_url}&fields=id,title,image_id,artist_title`;
 			paginaAnterior = data.pagination.current_page;
-			ultimaPagina = `https://api.artic.edu/api/v1/artworks?page=${50}&fields=id,title,image_id,artist_title`;
+			ultimaPagina = `https://api.artic.edu/api/v1/artworks?page=${data.pagination.total_pages}&fields=id,title,image_id,artist_title`;
 			mostrarObras(respuesta);
 		});
 };
