@@ -4,6 +4,9 @@ const botonPaginaAnterior = document.getElementById("pagina-anterior");
 const botonProximaPagina = document.getElementById("proxima-pagina");
 const botonUltimaPagina = document.getElementById("ultima-pagina");
 const iconoPaginado = document.querySelectorAll(".icono-paginado");
+const form = document.getElementById("form")
+const inputBusqueda = document.getElementById("input-busqueda");
+const botonBuscar = document.getElementById("boton-buscar");
 
 let urlInicial =
 	"https://api.artic.edu/api/v1/artworks?fields=id,title,image_id,artist_title";
@@ -66,3 +69,19 @@ botonProximaPagina.onclick = () => {
 botonUltimaPagina.onclick = () => {
 	llamarApi(ultimaPagina);
 };
+
+//** FORMULARIO **
+// se puede optimizar ? se puede agregar en llamarApi? ver con viqui
+
+const buscarObra = (obra) => {
+	fetch(`https://api.artic.edu/api/v1/artworks/:${obra}?fields=id,title,image_id`)
+		.then((res) => res.json())
+		.then((data) => {
+			respuesta = data;
+			mostrarObras(respuesta);
+		});
+};
+botonBuscar.onclick = (e) => {
+  e.preventDefault();
+  buscarObra(inputBusqueda.value);
+}
