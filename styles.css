@@ -48,7 +48,7 @@ form .filtros {
 	width: 40%;
 	padding: 20px;
 	display: flex;
-	flex-direction: row;
+	/* flex-direction: row; */
 }
 form .filtros select {
 	border: transparent;
@@ -67,8 +67,6 @@ form .boton-buscar {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	width: 100%;
-	height: 100%;
 	flex-wrap: wrap;
 }
 
@@ -78,7 +76,8 @@ form .boton-buscar {
 	align-items: center;
 	flex-direction: column;
 	background-color: #072227;
-	width: 20%;
+	width: 31%;
+	/* tenia un 20% de ancho */
 	height: 90%;
 	margin: 10px;
 	padding: 15px;
