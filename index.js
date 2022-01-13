@@ -4,9 +4,11 @@ const botonPaginaAnterior = document.getElementById("pagina-anterior");
 const botonProximaPagina = document.getElementById("proxima-pagina");
 const botonUltimaPagina = document.getElementById("ultima-pagina");
 const iconoPaginado = document.querySelectorAll(".icono-paginado");
+const inputBusqueda = document.getElementById("input-busqueda");
+const botonBuscar = document.getElementById("boton-buscar");
 
 let urlInicial =
-	"https://api.artic.edu/api/v1/artworks?fields=id,title,image_id,artist_title";
+	"https://api.artic.edu/api/v1/artworks?fields=id,title,image_id,artist_title&limit=10";
 let respuesta = "";
 let nextUrl = "";
 let prevUrl = "";
@@ -18,7 +20,7 @@ let primeraPagina =
 const mostrarObras = (respuesta) => {
 	const divContenedor = document.querySelector(".div-contenedor");
 	console.log(respuesta);
-	const htmlCards = respuesta.data.reduce((acc, curr) => {
+	const htmlCards = respuesta.reduce((acc, curr) => {
 		return (
 			acc +
 			`
@@ -45,7 +47,7 @@ const llamarApi = (url) => {
 	fetch(url)
 		.then((res) => res.json())
 		.then((data) => {
-			respuesta = data;
+			respuesta = data.data;
 			nextUrl = data.pagination.next_url;
 			prevUrl = `https://api.artic.edu/api/v1/artworks?page=${data.pagination.prev_url}&fields=id,title,image_id,artist_title`;
 			paginaAnterior = data.pagination.current_page;
@@ -53,7 +55,9 @@ const llamarApi = (url) => {
 			mostrarObras(respuesta);
 		});
 };
+
 llamarApi(urlInicial);
+
 botonPrimeraPagina.onclick = () => {
 	llamarApi(primeraPagina);
 };
@@ -65,4 +69,36 @@ botonProximaPagina.onclick = () => {
 };
 botonUltimaPagina.onclick = () => {
 	llamarApi(ultimaPagina);
+};
+
+const buscarObrasConOtroFetch = (data) => {
+	let respuesta = data.data;
+	console.log(respuesta);
+	let busquedaObras = [];
+	for (let i = 0; i < respuesta.length; i++) {
+		const element = respuesta[i];
+		console.log(element);
+		fetch(
+			`https://api.artic.edu/api/v1/artworks/${element.id}?fields=,title,image_id,artist_title`
+		)
+			.then((res) => res.json())
+			.then((data) => {
+				busquedaObras.push(data.data);
+				mostrarObras(busquedaObras);
+			});
+	}
+};
+
+const buscarObras = (busqueda) => {
+	fetch(`https://api.artic.edu/api/v1/artworks/search?q=${busqueda}`)
+		.then((res) => res.json())
+		.then((data) => {
+			console.log(data);
+			buscarObrasConOtroFetch(data);
+		});
+};
+
+botonBuscar.onclick = (e) => {
+	e.preventDefault();
+	buscarObras(inputBusqueda.value);
 };
