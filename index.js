@@ -19,7 +19,6 @@ let primeraPagina =
 
 const mostrarObras = (respuesta) => {
 	const divContenedor = document.querySelector(".div-contenedor");
-	console.log(respuesta);
 	const htmlCards = respuesta.reduce((acc, curr) => {
 		return (
 			acc +
@@ -84,11 +83,9 @@ const resultados = (total) => {
 
 const buscarObrasConOtroFetch = (data) => {
 	let respuesta = data.data;
-	console.log(respuesta);
 	let busquedaObras = [];
 	for (let i = 0; i < respuesta.length; i++) {
 		const element = respuesta[i];
-		console.log(element);
 		fetch(
 			`https://api.artic.edu/api/v1/artworks/${element.id}?fields=,title,image_id,artist_title`
 		)
@@ -99,12 +96,12 @@ const buscarObrasConOtroFetch = (data) => {
 			});
 	}
 };
-
+let offsetUltimaPagina = 0;
 const buscarObras = (busqueda) => {
 	fetch(`https://api.artic.edu/api/v1/artworks/search?q=${busqueda}`)
 		.then((res) => res.json())
 		.then((data) => {
-			console.log(data);
+			offsetUltimaPagina = data.pagination.total - 10;
 			buscarObrasConOtroFetch(data);
 		});
 };
@@ -112,4 +109,41 @@ const buscarObras = (busqueda) => {
 botonBuscar.onclick = (e) => {
 	e.preventDefault();
 	buscarObras(inputBusqueda.value);
+};
+
+let accObras = 0;
+
+const buscarObrasPorPagina = (busqueda, acumulador) => {
+	console.log(
+		`https://api.artic.edu/api/v1/artworks/search?q=${busqueda}&from=${acumulador}`
+	);
+	fetch(
+		`https://api.artic.edu/api/v1/artworks/search?q=${busqueda}&from=${acumulador}`
+	)
+		.then((res) => res.json())
+		.then((data) => {
+			buscarObrasConOtroFetch(data);
+		});
+};
+
+botonProximaPagina.onclick = () => {
+	accObras += 10;
+	buscarObrasPorPagina(inputBusqueda.value, accObras);
+};
+
+botonPaginaAnterior.onclick = () => {
+	if (accObras > 0) {
+		accObras -= 10;
+		buscarObrasPorPagina(inputBusqueda.value, accObras);
+	}
+};
+
+botonPrimeraPagina.onclick = () => {
+	accObras = 0;
+	buscarObrasPorPagina(inputBusqueda.value, accObras);
+};
+
+botonUltimaPagina.onclick = () => {
+	accObras = offsetUltimaPagina;
+	buscarObrasPorPagina(inputBusqueda.value, accObras);
 };
