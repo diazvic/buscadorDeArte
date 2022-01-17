@@ -1,171 +1,220 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100&family=Quicksand&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@200;600&display=swap");
 * {
-  margin: 0;
-  box-sizing: border-box;
-  padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+	padding: 0;
 }
 
 h1 {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-family: "quicksand";
-  font-size: 35px;
-  padding: 10px;
-  color: white;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-family: "quicksand";
+	font-size: 35px;
+	padding: 10px;
+	color: white;
 }
 
 .titulo-principal {
-  height: 80px;
-  background-color: #ce2445;
+	height: 80px;
+	background-color: #ce2445;
 }
 
 .imagen-museo {
-  height: 550px;
-  background: url(.//assets/5101.jpeg);
-  background-position: top;
+	height: 550px;
+	background: url(.//assets/5101.jpeg);
+	background-position: top;
 }
 
 form {
-  background-color: white;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  padding: 10px;
-  margin: 50px;
+	background-color: white;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	padding: 10px;
+	margin: 50px;
 }
 form .busqueda {
-  width: 50%;
+	width: 50%;
 }
 form .busqueda input {
-  width: 90%;
-  border: transparent;
-  border-bottom: 2px solid #000;
-  font-size: 22px;
-  margin-left: 20px;
+	width: 90%;
+	border: transparent;
+	border-bottom: 2px solid #000;
+	font-size: 22px;
+	margin-left: 20px;
 }
 form .filtros {
-  font-weight: bold;
-  width: 40%;
-  padding: 20px;
-  display: flex;
-  flex-direction: row;
+	font-weight: bold;
+	width: 40%;
+	padding: 20px;
+	display: flex;
+	flex-direction: row;
 }
 form .filtros select {
-  border: transparent;
-  border-radius: 5px;
+	border: transparent;
+	border-radius: 5px;
 }
 form .boton-buscar {
-  width: 60px;
-  height: 30px;
-  border: transparent;
-  border-radius: 10px;
-  color: white;
-  background-color: black;
+	width: 60px;
+	height: 30px;
+	border: transparent;
+	border-radius: 10px;
+	color: white;
+	background-color: black;
 }
 
 .div-contenedor {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 100%;
-  flex-wrap: wrap;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	height: 100%;
+	flex-wrap: wrap;
 }
 
 .div-interior {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  background-color: #072227;
-  width: 20%;
-  height: 90%;
-  margin: 10px;
-  padding: 15px;
-  box-shadow: 1px 0px 17px 5px rgba(201, 201, 201, 0.63);
-  -webkit-box-shadow: 1px 0px 17px 5px rgba(201, 201, 201, 0.63);
-  -moz-box-shadow: 1px 0px 17px 5px rgba(201, 201, 201, 0.63);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	background-color: #072227;
+	width: 20%;
+	height: 90%;
+	margin: 10px;
+	padding: 15px;
+	box-shadow: 1px 0px 17px 5px rgba(201, 201, 201, 0.63);
+	-webkit-box-shadow: 1px 0px 17px 5px rgba(201, 201, 201, 0.63);
+	-moz-box-shadow: 1px 0px 17px 5px rgba(201, 201, 201, 0.63);
 }
 
 .div-interior:hover {
-  transform: scale(1.3);
-  transition-duration: 0.3s;
-  z-index: 7;
+	transform: scale(1.3);
+	transition-duration: 0.3s;
+	z-index: 7;
 }
 
 img {
-  width: 230px;
-  height: 300px;
+	width: 230px;
+	height: 300px;
 }
 
 .imagen-card {
-  background-color: aqua;
-  height: 300px;
+	background-color: aqua;
+	height: 300px;
 }
 
 .info-card {
-  height: 150px;
-  padding: 10px;
-  margin-top: 10px;
+	height: 150px;
+	padding: 10px;
+	margin-top: 10px;
 }
 
 .titulo-obras {
-  font-family: "nunito";
-  font-size: 18px;
-  color: #fbfbfb;
-  font-weight: bold;
-  text-align: center;
+	font-family: "nunito";
+	font-size: 18px;
+	color: #fbfbfb;
+	font-weight: bold;
+	text-align: center;
 }
 
 .titulo-obras:hover {
-  color: #2d4263;
-  transition: 0.1s;
+	color: #2d4263;
+	transition: 0.1s;
 }
 
 .autor-obras {
-  font-family: "nunito";
-  font-size: 15px;
-  color: #fbfbfb;
-  text-align: center;
-  padding: 25px;
+	font-family: "nunito";
+	font-size: 15px;
+	color: #fbfbfb;
+	text-align: center;
+	padding: 25px;
 }
 
 .autor-obras:hover {
-  color: #2d4263;
-  transition: 0.1s;
+	color: #2d4263;
+	transition: 0.1s;
 }
 
 .iconos-flechas {
-  height: 80px;
-  background-color: #121212;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+	height: 80px;
+	background-color: #121212;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 .botones-flecha {
-  padding: 10px;
-  margin: 10px;
-  background-color: #8ca1a5;
-  border: none;
-  font-size: 20px;
-  width: 40px;
-  height: 40px;
+	padding: 10px;
+	margin: 10px;
+	background-color: #8ca1a5;
+	border: none;
+	font-size: 20px;
+	width: 40px;
+	height: 40px;
 }
 
 .botones-flecha:hover {
-  background-color: #ce2445;
+	background-color: #ce2445;
 }
 
 .icono-paginado {
-  color: white;
+	color: white;
 }
 
 .contador {
-  font-size: 30px;
-  font-weight: bold;
+	font-size: 30px;
+	font-weight: bold;
 }
 
+.div-contenedor-detalle {
+	display: none;
+	height: 500px;
+	background-color: #959191;
+	-webkit-box-pack: start;
+	-ms-flex-pack: start;
+	justify-content: flex-start;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
+	padding: 30px;
+}
+
+.div-contenedor-detalle .imagen {
+	position: relative;
+	top: 15px;
+}
+
+.div-contenedor-detalle .obra-detalle {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-orient: horizontal;
+	-webkit-box-direction: normal;
+	-ms-flex-direction: row;
+	flex-direction: row;
+}
+
+.div-contenedor-detalle .obra-detalle .info-obra {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-ms-flex-direction: column;
+	flex-direction: column;
+	margin-left: 25px;
+	padding: 10px;
+}
+
+.div-contenedor-detalle .obra-detalle .info-obra .div-parrafo {
+	height: 350px;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	margin-top: 10px;
+	overflow-y: auto;
+	color: white;
+}
 /*# sourceMappingURL=styles.css.map */
