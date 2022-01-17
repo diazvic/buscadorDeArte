@@ -26,9 +26,6 @@ const detalleObras = (id)=>{
 	.then(res => res.json())
 	.then(data =>{
 		respuestaDetalle = data.data
-		// console.log(data.data.date_start);
-		// console.log(data.data.place_of_origin);
-		// console.log(data.data.artist_display);
 		mostrarDetalleObra(respuestaDetalle);
 	})
 }
@@ -62,7 +59,6 @@ const mostrarDetalleObra = (data) => {
 		const cardsObras = document.querySelectorAll(".div-interior");
 		for (let i = 0; i < cardsObras.length; i++) {
 			cardsObras[i].onclick= ()=>{
-				console.log("Click");
 				const id = cardsObras[i].dataset.id 
 				detalleObras(id)
 			};
