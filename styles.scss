@@ -151,3 +151,34 @@ img {
 	font-size: 30px;
 	font-weight: bold;
 }
+.div-contenedor-detalle{
+	display: none;
+	height: 500px;
+	background-color: rgb(149, 145, 145);
+	justify-content: flex-start;
+	align-items: center;
+	padding: 30px;
+	.imagen{
+		position: relative;
+		top: 15px;
+	}
+	.obra-detalle{
+	display: flex;
+	flex-direction: row;
+	.info-obra{
+		display: flex;
+		flex-direction: column;
+		margin-left: 25px;
+		padding: 10px;
+		.div-parrafo{
+		height: 350px;
+		display: flex;
+		margin-top: 10px;
+		overflow-y:auto;
+		color: white;
+	}
+	}
+	
+}
+}
+

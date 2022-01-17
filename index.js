@@ -6,6 +6,8 @@ const botonUltimaPagina = document.getElementById("ultima-pagina");
 const iconoPaginado = document.querySelectorAll(".icono-paginado");
 const inputBusqueda = document.getElementById("input-busqueda");
 const botonBuscar = document.getElementById("boton-buscar");
+const divContenedor = document.querySelector(".div-contenedor");
+const divDetalleObra = document.querySelector(".div-contenedor-detalle");
 
 let urlInicial =
 	"https://api.artic.edu/api/v1/artworks?fields=id,title,image_id,artist_title&limit=10";
@@ -18,14 +20,43 @@ let primeraPagina =
 	"https://api.artic.edu/api/v1/artworks?page=1&fields=id,title,image_id,artist_title";
 
 	//Detalle al hacer click
-const mostrarDetalleObras = (id)=>{
+const detalleObras = (id)=>{
 	console.log(id);
-	fetch(`https://api.artic.edu/api/v1/artworks/:obra?fields=${id}`)
+	fetch(`https://api.artic.edu/api/v1/artworks/${id}`)
 	.then(res => res.json())
 	.then(data =>{
-		console.log(data.data);
+		respuestaDetalle = data.data
+		// console.log(data.data.date_start);
+		// console.log(data.data.place_of_origin);
+		// console.log(data.data.artist_display);
+		mostrarDetalleObra(respuestaDetalle);
 	})
 }
+const mostrarDetalleObra = (data) => {
+ divContenedor.style.display = "none";
+ divDetalleObra.style.display= "flex";
+ divDetalleObra.innerHTML = `
+ <div class="obra-detalle">
+		<div class= "imagen">
+			<img src="https://www.artic.edu/iiif/2/${
+				data.image_id
+			}/full/843,/0/default.jpg" alt="">
+		</div>
+		<div class="info-obra">
+			<h3>Año: ${data.date_start}</h3>
+			<h3>${data.place_of_origin}</h3>
+			<h3>${data.artist_display}</h3>
+			<div class="div-parrafo">
+				<p>${
+					data.publication_history == null
+						? "Unknown"
+						: data.publication_history
+				}</p>
+			</div>
+		</div>
+ </div>
+ `;
+};
 //agrega click a cada tarjeta para detalle
 	const setClick = () =>{
 		const cardsObras = document.querySelectorAll(".div-interior");
@@ -33,7 +64,7 @@ const mostrarDetalleObras = (id)=>{
 			cardsObras[i].onclick= ()=>{
 				console.log("Click");
 				const id = cardsObras[i].dataset.id 
-				mostrarDetalleObras(id)
+				detalleObras(id)
 			};
 		}
 	}
