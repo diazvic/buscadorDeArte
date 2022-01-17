@@ -19,53 +19,58 @@ let ultimaPagina = "";
 let primeraPagina =
 	"https://api.artic.edu/api/v1/artworks?page=1&fields=id,title,image_id,artist_title";
 
-	//Detalle al hacer click
-const detalleObras = (id)=>{
+//Detalle al hacer click
+const detalleObras = (id) => {
 	console.log(id);
-	fetch(`https://api.artic.edu/api/v1/artworks/${id}`)
-	.then(res => res.json())
-	.then(data =>{
-		respuestaDetalle = data.data
-		mostrarDetalleObra(respuestaDetalle);
-	})
-}
+	fetch(
+		`https://api.artic.edu/api/v1/artworks/${id}?fields=,title,image_id,artist_title,date_start,place_of_origin,artist_display,publication_history`
+	)
+		.then((res) => res.json())
+		.then((data) => {
+			respuestaDetalle = data.data;
+			mostrarDetalleObra(respuestaDetalle);
+		});
+};
+
 const mostrarDetalleObra = (data) => {
- divContenedor.style.display = "none";
- divDetalleObra.style.display= "flex";
- divDetalleObra.innerHTML = `
- <div class="obra-detalle">
+	divContenedor.style.display = "none";
+	divDetalleObra.style.display = "flex";
+	divDetalleObra.innerHTML = `
+<div class="obra-detalle">
 		<div class= "imagen">
-			<img src="https://www.artic.edu/iiif/2/${
+      <img src="https://www.artic.edu/iiif/2/${
 				data.image_id
 			}/full/843,/0/default.jpg" alt="">
-		</div>
+    </div>
 		<div class="info-obra">
-			<h3>Año: ${data.date_start}</h3>
+			<h3>Año:${data.date_start}</h3>
 			<h3>${data.place_of_origin}</h3>
 			<h3>${data.artist_display}</h3>
 			<div class="div-parrafo">
 				<p>${
 					data.publication_history == null
-						? "Unknown"
+						? "This piece doesn't have a publication history"
 						: data.publication_history
 				}</p>
 			</div>
 		</div>
- </div>
- `;
+</div>
+`;
 };
+
 //agrega click a cada tarjeta para detalle
-	const setClick = () =>{
-		const cardsObras = document.querySelectorAll(".div-interior");
-		for (let i = 0; i < cardsObras.length; i++) {
-			cardsObras[i].onclick= ()=>{
-				const id = cardsObras[i].dataset.id 
-				detalleObras(id)
-			};
-		}
+const setClick = () => {
+	const cardsObras = document.querySelectorAll(".div-interior");
+	for (let i = 0; i < cardsObras.length; i++) {
+		cardsObras[i].onclick = () => {
+			const id = cardsObras[i].dataset.id;
+			detalleObras(id);
+		};
 	}
+};
 
 const mostrarObras = (respuesta) => {
+	console.log(respuesta);
 	const divContenedor = document.querySelector(".div-contenedor");
 	const htmlCards = respuesta.reduce((acc, curr) => {
 		return (
@@ -88,7 +93,7 @@ const mostrarObras = (respuesta) => {
 		);
 	}, "");
 	divContenedor.innerHTML = htmlCards;
-	setClick()
+	setClick();
 };
 
 const llamarApi = (url) => {
@@ -96,12 +101,11 @@ const llamarApi = (url) => {
 		.then((res) => res.json())
 		.then((data) => {
 			respuesta = data.data;
-			//console.log(respuesta);
 			nextUrl = data.pagination.next_url;
 			prevUrl = `https://api.artic.edu/api/v1/artworks?page=${data.pagination.prev_url}&fields=id,title,image_id,artist_title`;
 			paginaAnterior = data.pagination.current_page;
 			ultimaPagina = `https://api.artic.edu/api/v1/artworks?page=${data.pagination.total_pages}&fields=id,title,image_id,artist_title`;
-			resultados(data.pagination.total)
+			resultados(data.pagination.total);
 			mostrarObras(respuesta);
 		});
 };
@@ -123,12 +127,9 @@ botonUltimaPagina.onclick = () => {
 
 //CONTADOR DE RESULTADOS
 const resultados = (total) => {
-
-    const contadorResultados = document.getElementById("contador-resultados");
-
-    contadorResultados.innerHTML = total;
-
-}
+	const contadorResultados = document.getElementById("contador-resultados");
+	contadorResultados.innerHTML = total;
+};
 
 const buscarObrasConOtroFetch = (data) => {
 	let respuesta = data.data;
@@ -136,7 +137,7 @@ const buscarObrasConOtroFetch = (data) => {
 	for (let i = 0; i < respuesta.length; i++) {
 		const element = respuesta[i];
 		fetch(
-			`https://api.artic.edu/api/v1/artworks/${element.id}?fields=,title,image_id,artist_title`
+			`https://api.artic.edu/api/v1/artworks/${element.id}?fields=,title,image_id,artist_title,id`
 		)
 			.then((res) => res.json())
 			.then((data) => {
