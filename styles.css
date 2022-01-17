@@ -217,4 +217,54 @@ img {
   font-size: 30px;
   font-weight: bold;
 }
+
+.div-contenedor-detalle {
+  display: none;
+  height: 500px;
+  background-color: #959191;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 30px;
+}
+
+.div-contenedor-detalle .imagen {
+  position: relative;
+  top: 15px;
+}
+
+.div-contenedor-detalle .obra-detalle {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.div-contenedor-detalle .obra-detalle .info-obra {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-left: 25px;
+  padding: 10px;
+}
+
+.div-contenedor-detalle .obra-detalle .info-obra .div-parrafo {
+  height: 350px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-top: 10px;
+  overflow-y: auto;
+  color: white;
+}
 /*# sourceMappingURL=styles.css.map */

@@ -6,6 +6,8 @@ const botonUltimaPagina = document.getElementById("ultima-pagina");
 const iconoPaginado = document.querySelectorAll(".icono-paginado");
 const inputBusqueda = document.getElementById("input-busqueda");
 const botonBuscar = document.getElementById("boton-buscar");
+const divContenedor = document.querySelector(".div-contenedor");
+const divDetalleObra = document.querySelector(".div-contenedor-detalle");
 
 let urlInicial =
 	"https://api.artic.edu/api/v1/artworks?fields=id,title,image_id,artist_title&limit=10";
@@ -17,13 +19,59 @@ let ultimaPagina = "";
 let primeraPagina =
 	"https://api.artic.edu/api/v1/artworks?page=1&fields=id,title,image_id,artist_title";
 
+	//Detalle al hacer click
+const detalleObras = (id)=>{
+	console.log(id);
+	fetch(`https://api.artic.edu/api/v1/artworks/${id}`)
+	.then(res => res.json())
+	.then(data =>{
+		respuestaDetalle = data.data
+		mostrarDetalleObra(respuestaDetalle);
+	})
+}
+const mostrarDetalleObra = (data) => {
+ divContenedor.style.display = "none";
+ divDetalleObra.style.display= "flex";
+ divDetalleObra.innerHTML = `
+ <div class="obra-detalle">
+		<div class= "imagen">
+			<img src="https://www.artic.edu/iiif/2/${
+				data.image_id
+			}/full/843,/0/default.jpg" alt="">
+		</div>
+		<div class="info-obra">
+			<h3>Año: ${data.date_start}</h3>
+			<h3>${data.place_of_origin}</h3>
+			<h3>${data.artist_display}</h3>
+			<div class="div-parrafo">
+				<p>${
+					data.publication_history == null
+						? "Unknown"
+						: data.publication_history
+				}</p>
+			</div>
+		</div>
+ </div>
+ `;
+};
+//agrega click a cada tarjeta para detalle
+	const setClick = () =>{
+		const cardsObras = document.querySelectorAll(".div-interior");
+		for (let i = 0; i < cardsObras.length; i++) {
+			cardsObras[i].onclick= ()=>{
+				const id = cardsObras[i].dataset.id 
+				detalleObras(id)
+			};
+		}
+	}
+
 const mostrarObras = (respuesta) => {
 	const divContenedor = document.querySelector(".div-contenedor");
 	const htmlCards = respuesta.reduce((acc, curr) => {
 		return (
 			acc +
 			`
-	<div class="div-interior">
+	<div class="div-interior" data-id="${curr.id}">
 		<div class= "imagen-card">
 			<img src="https://www.artic.edu/iiif/2/${
 				curr.image_id
@@ -40,6 +88,7 @@ const mostrarObras = (respuesta) => {
 		);
 	}, "");
 	divContenedor.innerHTML = htmlCards;
+	setClick()
 };
 
 const llamarApi = (url) => {
@@ -47,7 +96,7 @@ const llamarApi = (url) => {
 		.then((res) => res.json())
 		.then((data) => {
 			respuesta = data.data;
-			console.log(data);
+			//console.log(respuesta);
 			nextUrl = data.pagination.next_url;
 			prevUrl = `https://api.artic.edu/api/v1/artworks?page=${data.pagination.prev_url}&fields=id,title,image_id,artist_title`;
 			paginaAnterior = data.pagination.current_page;
