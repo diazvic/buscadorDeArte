@@ -17,6 +17,6 @@
   },
   "homepage": "https://github.com/diazvic/buscadorDeArte#readme",
   "dependencies": {
-    "sass": "^1.45.2"
+    "sass": "^1.48.0"
   }
 }
