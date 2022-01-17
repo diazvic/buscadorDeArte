@@ -129,25 +129,25 @@ img {
 }
 .iconos-flechas {
 	height: 80px;
-	background-color: aquamarine;
+	background-color: #121212;
 	@include flex-center();
 }
 .botones-flecha {
 	padding: 10px;
 	margin: 10px;
-	background-color: #072227;
+	background-color: #8ca1a5;
 	border: none;
 	font-size: 20px;
 	width: 40px;
 	height: 40px;
 }
 .botones-flecha:hover {
-	background-color: red;
+	background-color: $color-principal;
 }
 .icono-paginado {
 	color: white;
 }
-.contador{
+.contador {
 	font-size: 30px;
 	font-weight: bold;
 }
