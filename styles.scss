@@ -1,7 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100&family=Quicksand&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@200;600&display=swap");
 @import "_variables";
-@import "_responsive";
 @mixin flex-center {
 	display: flex;
 	justify-content: center;
@@ -90,13 +89,12 @@ form {
 	z-index: 7;
 }
 img {
-	width: 100%;
+	width: 230px;
 	height: 300px;
 }
 .imagen-card {
 	background-color: aqua;
 	height: 300px;
-	width: 100%;
 }
 .info-card {
 	height: 150px;
