@@ -37,6 +37,9 @@ const mostrarDetalleObra = (data) => {
 	divDetalleObra.style.display = "flex";
 	divDetalleObra.innerHTML = `
 <div class="obra-detalle">
+		<button class="boton-volver-atras">
+			<i class="fas fa-arrow-left"></i>
+		</button>
 		<div class= "imagen">
       <img src="https://www.artic.edu/iiif/2/${
 				data.image_id
@@ -56,6 +59,11 @@ const mostrarDetalleObra = (data) => {
 		</div>
 </div>
 `;
+	const botonVolverAtras = document.querySelector(".boton-volver-atras");
+	botonVolverAtras.onclick = () => {
+		divContenedor.style.display = "flex";
+		divDetalleObra.style.display = "none";
+	};
 };
 
 //agrega click a cada tarjeta para detalle
