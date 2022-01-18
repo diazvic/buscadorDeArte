@@ -76,7 +76,7 @@ form {
 	@include flex-center();
 	flex-direction: column;
 	background-color: #072227;
-	width: 20%;
+	// width: 20%; hay q sacar este width, para q las tarjetas se vean bien
 	height: 90%;
 	margin: 10px;
 	padding: 15px;

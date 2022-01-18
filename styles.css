@@ -1,20 +1,23 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100&family=Quicksand&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@200;600&display=swap");
-@media (min-width: 576px) {
+@media screen and (max-width: 414px) {
   .div-contenedor {
     width: 100%;
     display: flex;
     justify-content: center;
     flex-direction: column;
-    align-items: center;
   }
 
   .div-interior {
-    flex-direction: column;
-    flex-wrap: wrap;
+    width: 80%;
   }
 
   img {
+    width: 100%;
+  }
+
+  .imagen-card {
+    background-color: blue;
     width: 100%;
   }
 
@@ -23,7 +26,6 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    flex-direction: flex-start;
   }
 
   .titulo-principal {
@@ -31,7 +33,12 @@
   }
 
   h1 {
-    font-size: 3em;
+    font-size: 0.1em;
+  }
+
+  .tipo {
+    display: flex;
+    flex-direction: column;
   }
 }
 * {
@@ -114,7 +121,6 @@ form .boton-buscar {
   align-items: center;
   flex-direction: column;
   background-color: #072227;
-  width: 20%;
   height: 90%;
   margin: 10px;
   padding: 15px;

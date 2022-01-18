@@ -4,27 +4,32 @@
 		display: flex;
 		justify-content: center;
 		flex-direction: column;
-		align-items: center;
 	}
 	.div-interior {
-		flex-direction: column;
-		flex-wrap: wrap;
+		width: 80%;
 	}
 	img {
 		width: 100%;
 	}
-
+	.imagen-card {
+		background-color: blue;
+		width: 100%;
+	}
 	.nav {
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
 		align-items: center;
-		flex-direction: flex-start;
 	}
 	.titulo-principal {
 		height: 90%;
 	}
 	h1 {
-		font-size: 3em;
+		font-size: 0.1em;
+	}
+
+	.tipo {
+		display: flex;
+		flex-direction: column;
 	}
 }
