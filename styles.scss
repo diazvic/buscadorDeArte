@@ -6,6 +6,7 @@
 	justify-content: center;
 	align-items: center;
 }
+
 * {
 	margin: 0;
 	box-sizing: border-box;
@@ -19,7 +20,6 @@ h1 {
 	color: white;
 }
 .titulo-principal {
-	height: 80px;
 	background-color: $color-principal;
 }
 .imagen-museo {
@@ -27,13 +27,13 @@ h1 {
 	background: url(.//assets/5101.jpeg);
 	background-position: top;
 }
+
 form {
+	display: flex;
+	align-items: center;
 	width: 100%;
 	height: 200px;
 	background-color: white;
-	display: flex;
-	flex-direction: row;
-	align-items: center;
 	padding: 10px;
 	margin: 10px;
 	.busqueda {
@@ -77,13 +77,14 @@ form {
 	width: 100%;
 	height: 100%;
 	flex-wrap: wrap;
+	background-color: red;
 }
 .div-interior {
 	@include flex-center();
 	flex-direction: column;
 	background-color: #072227;
-	// width: 20%; hay q sacar este width, para q las tarjetas se vean bien
-	height: 90%;
+	width: 450px;
+	height: 500px;
 	margin: 10px;
 	padding: 15px;
 	box-shadow: 1px 0px 17px 5px rgba(201, 201, 201, 0.63);
@@ -104,9 +105,11 @@ img {
 	height: 300px;
 }
 .info-card {
+	width: 30%;
 	height: 150px;
 	padding: 10px;
 	margin-top: 10px;
+	overflow: hidden;
 }
 .titulo-obras {
 	font-family: $letra-obras-de-arte;
@@ -190,7 +193,7 @@ img {
 	height: 20px;
 	margin-right: 5px;
 }
-.section-principal{
+.section-principal {
 	width: 100%;
 	height: 100%;
 	margin: 0px 20px 0px 20px;
