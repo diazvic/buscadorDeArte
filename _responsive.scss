@@ -1,0 +1,30 @@
+@media (min-width: 576px) {
+	.div-contenedor {
+		width: 100%;
+		display: flex;
+		justify-content: center;
+		flex-direction: column;
+		align-items: center;
+	}
+	.div-interior {
+		flex-direction: column;
+		flex-wrap: wrap;
+	}
+	img {
+		width: 100%;
+	}
+
+	.nav {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		flex-direction: flex-start;
+	}
+	.titulo-principal {
+		height: 90%;
+	}
+	h1 {
+		font-size: 3em;
+	}
+}
