@@ -2,14 +2,21 @@
 @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@200;600&display=swap");
 * {
   margin: 0;
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   padding: 0;
 }
 
 h1 {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   font-family: "quicksand";
   font-size: 35px;
   padding: 10px;
@@ -27,17 +34,23 @@ h1 {
 }
 
 form {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   width: 100%;
   height: 200px;
   background-color: white;
   padding: 10px;
   margin: 10px;
 }
+
 form .busqueda {
   width: 50%;
 }
+
 form .busqueda input {
   width: 90%;
   border: transparent;
@@ -46,14 +59,23 @@ form .busqueda input {
   margin-left: 10px;
   margin-top: 5px;
 }
+
 form .filtros {
   font-weight: bold;
   width: 40%;
   padding: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
 }
+
 form .filtros select {
   border: transparent;
   border-radius: 5px;
@@ -61,6 +83,7 @@ form .filtros select {
   width: 150px;
   font-size: 15px;
 }
+
 form .boton-buscar {
   width: 60px;
   height: 30px;
@@ -71,19 +94,35 @@ form .boton-buscar {
 }
 
 .div-contenedor {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   width: 100%;
   height: 100%;
-  flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
 
 .div-interior {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   background-color: #072227;
   width: 450px;
   height: 500px;
@@ -95,8 +134,10 @@ form .boton-buscar {
 }
 
 .div-interior:hover {
-  transform: scale(1.3);
-  transition-duration: 0.3s;
+  -webkit-transform: scale(1.3);
+          transform: scale(1.3);
+  -webkit-transition-duration: 0.3s;
+          transition-duration: 0.3s;
   z-index: 7;
 }
 
@@ -127,6 +168,7 @@ img {
 
 .titulo-obras:hover {
   color: #2d4263;
+  -webkit-transition: 0.1s;
   transition: 0.1s;
 }
 
@@ -140,15 +182,22 @@ img {
 
 .autor-obras:hover {
   color: #2d4263;
+  -webkit-transition: 0.1s;
   transition: 0.1s;
 }
 
 .iconos-flechas {
   height: 80px;
   background-color: #121212;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .botones-flecha {
@@ -178,26 +227,46 @@ img {
   display: none;
   height: 500px;
   background-color: #959191;
-  justify-content: flex-start;
-  align-items: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   padding: 30px;
 }
+
 .div-contenedor-detalle .imagen {
   position: relative;
   top: 15px;
 }
+
 .div-contenedor-detalle .obra-detalle {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: row;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
 }
+
 .div-contenedor-detalle .obra-detalle .info-obra {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   margin-left: 25px;
   padding: 10px;
 }
+
 .div-contenedor-detalle .obra-detalle .info-obra .div-parrafo {
   height: 350px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   margin-top: 10px;
   overflow-y: auto;
@@ -221,50 +290,74 @@ img {
   body {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
   }
-
   .div-contenedor {
     width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    justify-content: center;
-    flex-direction: column;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
   }
-
   .div-interior {
     width: 70%;
     height: 85%;
   }
-
   img {
     width: 100%;
   }
-
   .info-card {
     padding: 0;
     font-size: 12px;
     width: 60%;
     overflow: hidden;
   }
-
   .nav {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
     width: 100%;
   }
-
   form {
-    height: 180px;
-    display: flex;
-    flex-direction: column;
-  }
-
-  .busqueda {
     width: 100%;
-    justify-content: flex-start;
+    height: 250px;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .busqueda {
+    width: 400px;
+    margin: 10px;
+    position: relative;
+    right: 100px;
+  }
+  .filtros {
+    margin-bottom: 20px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+  .boton-buscar {
+    position: relative;
+    left: 150px;
   }
 }
-
 /*# sourceMappingURL=styles.css.map */
