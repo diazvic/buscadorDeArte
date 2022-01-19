@@ -1,7 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100&family=Quicksand&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@200;600&display=swap");
 @import "_variables";
-// @import "_responsive";
 @mixin flex-center {
 	display: flex;
 	justify-content: center;
@@ -35,13 +34,13 @@ h3{
 form {
 	display: flex;
 	align-items: center;
+	justify-content: space-around;
 	width: 100%;
 	height: 200px;
 	background-color: white;
-	padding: 10px;
-	margin: 10px;
+	justify-content: space-around;
 	.busqueda {
-		width: 50%;
+		width: 500px;
 		input {
 			width: 90%;
 			border: transparent;
@@ -52,8 +51,8 @@ form {
 		}
 	}
 	.filtros {
+		width: 800px;
 		font-weight: bold;
-		width: 40%;
 		padding: 20px;
 		display: flex;
 		flex-direction: row;
@@ -237,21 +236,20 @@ img {
 		width: 100%;
 	}
 	form {
-		width: 100%;
-		height: 250px;
+		height: 200px;
 		flex-direction: column;
-	}
-	.busqueda {
-		width: 400px; //NO TOMA EL ANCHO (?)
-		background-color: crimson;
-		margin: 10px;
-		position: relative;
-		right: 100px;
-	}
-	.filtros{
-	 margin-bottom: 20px;
+		margin-top: 20px;
+		.busqueda {
+		width:400px;
+		margin-bottom: 15px;
+		}
+		.filtros{
+		width: 500px;
+	 	margin-bottom: 20px;
 		display: flex;
+		}
 	}
+	
 	.boton-buscar{
 		position: relative;
 		left: 150px;
