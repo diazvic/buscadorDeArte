@@ -8,7 +8,7 @@ const inputBusqueda = document.getElementById("input-busqueda");
 const botonBuscar = document.getElementById("boton-buscar");
 const divContenedor = document.querySelector(".div-contenedor");
 const divDetalleObra = document.querySelector(".div-contenedor-detalle");
-
+const ordenar = document.getElementById("ordenar");
 let urlInicial =
 	"https://api.artic.edu/api/v1/artworks?fields=id,title,image_id,artist_title&limit=10";
 let respuesta = "";
@@ -205,3 +205,45 @@ botonUltimaPagina.onclick = () => {
 	accObras = offsetUltimaPagina;
 	buscarObrasPorPagina(inputBusqueda.value, accObras);
 };
+
+ordenar.onchange = () => {
+	const ordenar = document.getElementById("ordenar").value;
+	let elementos = respuesta;
+	console.log(ordenar);
+	if (ordenar === "a-z") {
+		ordenarAZ(elementos);
+	}
+	// if (ordenar === "z-a") {
+	// 	ordenarZA(elementos);
+	// }
+};
+
+const ordenarAZ = (elementos) => {
+	console.log("Ordeno de la A a la Z", elementos);
+	const elementosOrdenados = elementos.sort((a, b) => {
+		// let fa = a.title.toLowerCase();
+		// let fb = b.title.toLowerCase();
+
+		if (a.title < b.title) {
+			//esto seria si a es menor q b tiene q estar antes, por eso retorno -1
+			return -1;
+		}
+		if (a.title > b.title) {
+			//esto seria si a es mayor q b tiene q estar antes, por eso retorno 1
+			return 1;
+		}
+		return 0;
+		//quiere decir q son iguales
+	});
+	// Voy a hacer la logica que agarre elementos y los ordene, dejando el mismo formato, cuando estan ordenados
+	// y tienen el mismo formato hago:
+	mostrarObras(elementosOrdenados);
+};
+
+// const ordenarZA = (elementos) => {
+// 	console.log("Ordeno de la Z a la A", elementos);
+// 	let elementosOrdenados = "Logica para ordenar elementos";
+// 	// Voy a hacer la logica que agarre elementos y los ordene, dejando el mismo formato, cuando estan ordenados
+// 	// y tienen el mismo formato hago:
+// 	mostrarObras(elementosOrdenados);
+// };
