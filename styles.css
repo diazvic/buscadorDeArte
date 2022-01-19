@@ -23,6 +23,10 @@ h1 {
   color: white;
 }
 
+h3 {
+  padding: 20px;
+}
+
 .titulo-principal {
   background-color: #ce2445;
 }
@@ -221,6 +225,7 @@ img {
 .contador {
   font-size: 30px;
   font-weight: bold;
+  margin-left: 30px;
 }
 
 .div-contenedor-detalle {
@@ -283,7 +288,6 @@ img {
 .section-principal {
   width: 100%;
   height: 100%;
-  margin: 0px 20px 0px 20px;
 }
 
 @media screen and (max-width: 576px) {
@@ -345,6 +349,7 @@ img {
   }
   .busqueda {
     width: 400px;
+    background-color: crimson;
     margin: 10px;
     position: relative;
     right: 100px;
