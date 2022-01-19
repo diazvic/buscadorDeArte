@@ -19,7 +19,7 @@ h1 {
 	padding: 10px;
 	color: white;
 }
-h3{
+h3 {
 	padding: 20px;
 }
 .titulo-principal {
@@ -55,7 +55,7 @@ form {
 		font-weight: bold;
 		padding: 20px;
 		display: flex;
-		flex-direction: row;
+		// flex-direction: row;
 		justify-content: space-evenly;
 		select {
 			border: transparent;
@@ -172,7 +172,7 @@ img {
 	}
 	.obra-detalle {
 		display: flex;
-		flex-direction: row;
+		// flex-direction: row;
 		.info-obra {
 			display: flex;
 			flex-direction: column;
@@ -188,7 +188,12 @@ img {
 		}
 	}
 }
-
+.parrafo-footer {
+	@include flex-center();
+	background-color: $color-principal;
+	color: #fff8f3;
+	height: 50px;
+}
 .boton-volver-atras {
 	border: none;
 	width: 20px;
@@ -240,18 +245,22 @@ img {
 		flex-direction: column;
 		margin-top: 20px;
 		.busqueda {
-		width: 400px;
-		margin-bottom: 15px;
+			width: 400px;
+			margin-bottom: 15px;
 		}
-		.filtros{
-		width: 400px;
-	 	margin-bottom: 20px;
-		display: flex;
-		flex-direction: row;
+		.filtros {
+			width: 400px;
+			margin-bottom: 20px;
+			display: flex;
+			// flex-direction: row;
 		}
 	}
-	.boton-buscar{
+	.boton-buscar {
 		position: relative;
 		left: 150px;
+	}
+	.parrafo-footer {
+		height: 30%;
+		width: 100%;
 	}
 }
