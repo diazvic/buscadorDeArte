@@ -61,6 +61,7 @@ form {
 			margin-left: 5px;
 			width: 100px;
 			font-size: 15px;
+			color: black;
 		}
 	}
 	.boton-buscar {
@@ -168,7 +169,7 @@ img {
 		display: flex;
 		.info-obra {
 			display: flex;
-			width: 1000px;
+			width: 900px;
 			flex-direction: column;
 			margin-left: 30px;
 			.div-parrafo {
@@ -260,4 +261,29 @@ img {
 		height: 30%;
 		width: 100%;
 	}
+	.imagen{
+		height: 600px;
+		overflow: hidden;
+		margin-bottom: 15px;
+	}
+	.obra-detalle{
+	 height: 500px;
+	 width: 500px;
+	 display: flex;
+	 align-items: center;
+	 flex-direction: column;
+	 overflow: hidden;
+	}
+	.info-obra{
+		width: 80px;
+		height: 200px;
+		text-align: center;
+		font-size: 12px;
+	}
+	.boton-volver-atras {
+		 position: relative;
+		 left: 200px;
+		 top: 20px;
+	 }
+
 }
