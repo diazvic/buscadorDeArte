@@ -19,9 +19,7 @@ h1 {
 	padding: 10px;
 	color: white;
 }
-h3 {
-	padding: 20px;
-}
+
 .titulo-principal {
 	background-color: $color-principal;
 }
@@ -161,29 +159,25 @@ img {
 }
 .div-contenedor-detalle {
 	display: none;
+	width: 100%;
 	height: 500px;
 	background-color: rgb(149, 145, 145);
 	justify-content: flex-start;
 	align-items: center;
-	padding: 30px;
-	.imagen {
-		position: relative;
-		top: 15px;
-	}
 	.obra-detalle {
 		display: flex;
-		// flex-direction: row;
 		.info-obra {
 			display: flex;
+			width: 1000px;
 			flex-direction: column;
-			margin-left: 25px;
-			padding: 10px;
+			margin-left: 30px;
 			.div-parrafo {
-				height: 350px;
+				width: 900px;
+				height: 300px;
 				display: flex;
-				margin-top: 10px;
 				overflow-y: auto;
 				color: white;
+				padding-top: 15px;
 			}
 		}
 	}
@@ -199,6 +193,9 @@ img {
 	width: 20px;
 	height: 20px;
 	margin-right: 5px;
+	position: relative;
+	bottom:50px;
+	left: 10px;
 }
 .section-principal {
 	width: 100%;
