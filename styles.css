@@ -391,6 +391,7 @@ img {
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
+    overflow-x: hidden;
   }
   .info-obra {
     width: 400px;

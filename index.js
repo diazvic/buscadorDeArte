@@ -26,7 +26,6 @@ let busquedaGlobal = false;
 
 //Detalle al hacer click
 const detalleObras = (id) => {
-	console.log("detalleObras");
 	fetch(
 		`https://api.artic.edu/api/v1/artworks/${id}?fields=,title,image_id,artist_title,date_start,place_of_origin,artist_display,publication_history`
 	)
@@ -49,8 +48,8 @@ const mostrarDetalleObra = (data) => {
 		</button>
 		<div class= "imagen">
       <img src="https://www.artic.edu/iiif/2/${
-				data.image_id
-			}/full/843,/0/default.jpg" alt="">
+			data.image_id
+		}/full/843,/0/default.jpg" alt="">
     </div>
 		<div class="info-obra">
 			<h3>Año:${data.date_start}</h3>
@@ -76,7 +75,6 @@ const mostrarDetalleObra = (data) => {
 
 //agrega click a cada tarjeta para detalle
 const setClick = () => {
-	console.log("setClick");
 	const cardsObras = document.querySelectorAll(".div-interior");
 	for (let i = 0; i < cardsObras.length; i++) {
 		cardsObras[i].onclick = () => {
@@ -143,12 +141,6 @@ botonProximaPagina.onclick = () => {
 };
 botonUltimaPagina.onclick = () => {
 	llamarApi(ultimaPagina);
-};
-
-//CONTADOR DE RESULTADOS
-const resultados = (total) => {
-	const contadorResultados = document.getElementById("contador-resultados");
-	contadorResultados.innerHTML = total;
 };
 
 const buscarObrasConOtroFetch = (data) => {
@@ -276,7 +268,6 @@ const ordenarAZ = (elementos, ordenarPor) => {
 			ordenarPrimeraPalabra = ordenPrimero.artist_title.toLowerCase();
 			ordenarSegundaPalabra = ordenSegundo.artist_title.toLowerCase();
 		}
-
 		if (ordenarPrimeraPalabra < ordenarSegundaPalabra) {
 			//esto seria si a es menor q b tiene q estar antes, por eso retorno -1
 			return -1;
@@ -320,3 +311,9 @@ const ordenarZA = (elementos, ordenarPor) => {
 	// y tienen el mismo formato hago:
 	return elementosOrdenados;
 };
+//CONTADOR DE RESULTADOS
+const resultados = (total) => {
+	const contadorResultados = document.getElementById("contador-resultados");
+	contadorResultados.innerHTML = total;
+};
+

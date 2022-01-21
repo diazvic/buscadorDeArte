@@ -239,6 +239,7 @@ img {
 		width: 500px;
 		@include flex-center();
 		flex-direction: column;
+		overflow-x: hidden;
 	}
 	.info-obra {
 		width: 400px;
