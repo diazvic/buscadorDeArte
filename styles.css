@@ -290,8 +290,10 @@ img {
   }
 
   .boton-buscar {
-    position: relative;
-    right: 15px;
+    width: 100px;
+    height: 100px;
+    border-radius: 30px;
+    font-size: 20px;
   }
 
   .parrafo-footer {
@@ -328,7 +330,7 @@ img {
   .div-parrafo {
     width: 400px;
     height: 100px;
-    text-align: center;
+    justify-content: center;
   }
 
   .boton-volver-atras {
@@ -339,6 +341,11 @@ img {
   .div-contador {
     position: relative;
     left: 120px;
+  }
+
+  .contador {
+    font-size: 20px;
+    font-weight: bold;
   }
 }
 
