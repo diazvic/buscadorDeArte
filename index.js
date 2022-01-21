@@ -306,6 +306,7 @@ const ordenarZA = (elementos, ordenarPor) => {
 	// y tienen el mismo formato hago:
 	return elementosOrdenados;
 };
+
 //CONTADOR DE RESULTADOS
 const resultados = (total) => {
 	const contadorResultados = document.getElementById("contador-resultados");
