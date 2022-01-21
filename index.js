@@ -10,9 +10,9 @@ const divContenedor = document.querySelector(".div-contenedor");
 const divDetalleObra = document.querySelector(".div-contenedor-detalle");
 const divContador = document.getElementById("div-contador");
 const ordenar = document.getElementById("ordenar");
-
 const filtrarTipo = document.getElementById("obras");
 
+//variables
 let urlInicial =
 	"https://api.artic.edu/api/v1/artworks?fields=id,title,image_id,artist_title&limit=10";
 let respuesta = "";
@@ -21,7 +21,8 @@ let prevUrl = "";
 let paginaAnterior = "";
 let ultimaPagina = "";
 let primeraPagina =
-	"https://api.artic.edu/api/v1/artworks?page=1&fields=id,title,image_id,artist_title";
+	"https://api.artic.edu/api/v1/artworks?page=1&fields=id,title,image_id,artist_title&limit=10";
+let busquedaGlobal = false;
 
 //Detalle al hacer click
 const detalleObras = (id) => {
@@ -118,11 +119,10 @@ const llamarApi = (url) => {
 		.then((data) => {
 			respuesta = data.data;
 			nextUrl = data.pagination.next_url;
-			prevUrl = `https://api.artic.edu/api/v1/artworks?page=${data.pagination.prev_url}&fields=id,title,image_id,artist_title`;
+			prevUrl = data.pagination.prev_url;
 			paginaAnterior = data.pagination.current_page;
-			ultimaPagina = `https://api.artic.edu/api/v1/artworks?page=${data.pagination.total_pages}&fields=id,title,image_id,artist_title`;
-			let total = data.pagination.total;
-			resultados(total);
+			ultimaPagina = `https://api.artic.edu/api/v1/artworks?page=${data.pagination.total_pages}&fields=id,title,image_id,artist_title&limit=10`;
+			resultados(data.pagination.total);
 			let elementosOrdenados = ordenarAZ(respuesta);
 			mostrarObras(elementosOrdenados);
 		});
@@ -144,7 +144,7 @@ botonUltimaPagina.onclick = () => {
 };
 
 const buscarObrasConOtroFetch = (data) => {
-	console.log("buscarObrasConOtroFetch");
+	console.log("buscarObrasConOtroFetch", data);
 	respuesta = data.data;
 	let busquedaObras = [];
 	for (let i = 0; i < respuesta.length; i++) {
@@ -154,6 +154,9 @@ const buscarObrasConOtroFetch = (data) => {
 		)
 			.then((res) => res.json())
 			.then((data) => {
+				console.log(
+					"https://api.artic.edu/api/v1/artworks/${element.id}?fields=,title,image_id,artist_title,id"
+				);
 				busquedaObras.push(data.data);
 				if (busquedaObras.length == 10) {
 					mostrarObras(ordenarAZ(busquedaObras));
@@ -174,6 +177,10 @@ const buscarObras = (busqueda) => {
 
 botonBuscar.onclick = (e) => {
 	e.preventDefault();
+	if (inputBusqueda.value == "") {
+		return;
+	}
+	busquedaGlobal = true;
 	buscarObras(inputBusqueda.value);
 };
 
@@ -181,6 +188,9 @@ let accObras = 0;
 
 const buscarObrasPorPagina = (busqueda, acumulador) => {
 	console.log("buscarObrasPorPagina");
+	console.log(
+		`https://api.artic.edu/api/v1/artworks/search?q=${busqueda}&from=${acumulador}`
+	);
 	fetch(
 		`https://api.artic.edu/api/v1/artworks/search?q=${busqueda}&from=${acumulador}`
 	)
@@ -192,37 +202,47 @@ const buscarObrasPorPagina = (busqueda, acumulador) => {
 //onclicks del paginado
 botonProximaPagina.onclick = () => {
 	console.log("botonProximaPagina");
-	accObras += 10;
-	deshabilitarBotones()
-	buscarObrasPorPagina(inputBusqueda.value, accObras);
+	if (busquedaGlobal == false) {
+		llamarApi(nextUrl);
+	} else if (busquedaGlobal == true) {
+		accObras += 10;
+		buscarObrasPorPagina(inputBusqueda.value, accObras);
+	}
 };
 
 botonPaginaAnterior.onclick = () => {
 	console.log("botonPaginaAnterior");
-	if (accObras > 0) {
-		accObras -= 10;
-		buscarObrasPorPagina(inputBusqueda.value, accObras);
+	if (busquedaGlobal == false) {
+		llamarApi(prevUrl);
+	} else if (busquedaGlobal == true) {
+		if (accObras > 0) {
+			accObras -= 10;
+			buscarObrasPorPagina(inputBusqueda.value, accObras);
+		}
 	}
 };
 
 botonPrimeraPagina.onclick = () => {
 	console.log("botonPrimeraPagina");
-	accObras = 0;
-	buscarObrasPorPagina(inputBusqueda.value, accObras);
+	if (busquedaGlobal == true) {
+		accObras = 0;
+		buscarObrasPorPagina(inputBusqueda.value, accObras);
+	}
 };
 
 botonUltimaPagina.onclick = () => {
 	console.log("botonUltimaPagina");
-	accObras = offsetUltimaPagina;
-	buscarObrasPorPagina(inputBusqueda.value, accObras);
+	if (busquedaGlobal == true) {
+		accObras = offsetUltimaPagina;
+		buscarObrasPorPagina(inputBusqueda.value, accObras);
+	}
 };
 
-//cambiar esta funcion por filtrarYOrdenar, consultar con yani
 const filtrarYOrdenar = () => {
 	const ordenar = document.getElementById("ordenar").value; // Puede valer a-z o z-a
 	const filtrarTipo = document.getElementById("obras").value; // Puede valer titulo o autor
 	let elementos = respuesta;
-	console.log("ordenar");
+	console.log("ordenar", respuesta);
 	if (filtrarTipo === "titulo" && ordenar === "a-z") {
 		mostrarObras(ordenarAZ(elementos, "titulo"));
 	} else if (filtrarTipo === "titulo" && ordenar === "z-a") {
@@ -233,7 +253,6 @@ const filtrarYOrdenar = () => {
 		mostrarObras(ordenarZA(elementos, "autor"));
 	}
 };
-//cambiar aca tambien por el nombre de la nueva funcion
 ordenar.addEventListener("change", filtrarYOrdenar);
 filtrarTipo.addEventListener("change", filtrarYOrdenar);
 
