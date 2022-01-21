@@ -16,6 +16,7 @@ const filtrarTipo = document.getElementById("obras");
 let urlInicial =
 	"https://api.artic.edu/api/v1/artworks?fields=id,title,image_id,artist_title,date_start&limit=10";
 let respuesta = "";
+let total = "";
 let nextUrl = "";
 let prevUrl = "";
 let paginaAnterior = "";
@@ -124,7 +125,8 @@ const llamarApi = (url) => {
 			prevUrl = `https://api.artic.edu/api/v1/artworks?page=${data.pagination.prev_url}&fields=id,title,image_id,artist_title`;
 			paginaAnterior = data.pagination.current_page;
 			ultimaPagina = `https://api.artic.edu/api/v1/artworks?page=${data.pagination.total_pages}&fields=id,title,image_id,artist_title,`;
-			resultados(data.pagination.total);
+			total = data.pagination.total;
+			resultados(total);
 			let elementosOrdenados = ordenarAZ(respuesta);
 			mostrarObras(elementosOrdenados);
 		});
