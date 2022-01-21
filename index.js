@@ -14,14 +14,14 @@ const ordenar = document.getElementById("ordenar");
 const filtrarTipo = document.getElementById("obras");
 
 let urlInicial =
-	"https://api.artic.edu/api/v1/artworks?fields=id,title,image_id,artist_title&limit=10";
+	"https://api.artic.edu/api/v1/artworks?fields=id,title,image_id,artist_title,date_start&limit=10";
 let respuesta = "";
 let nextUrl = "";
 let prevUrl = "";
 let paginaAnterior = "";
 let ultimaPagina = "";
 let primeraPagina =
-	"https://api.artic.edu/api/v1/artworks?page=1&fields=id,title,image_id,artist_title";
+	"https://api.artic.edu/api/v1/artworks?page=1&fields=id,title,image_id,artist_title,date_start";
 
 //Detalle al hacer click
 const detalleObras = (id) => {
@@ -33,6 +33,7 @@ const detalleObras = (id) => {
 		.then((data) => {
 			respuestaDetalle = data.data;
 			mostrarDetalleObra(respuestaDetalle);
+			mostrarObras(elementosOrdenados);
 		});
 };
 
@@ -122,7 +123,7 @@ const llamarApi = (url) => {
 			nextUrl = data.pagination.next_url;
 			prevUrl = `https://api.artic.edu/api/v1/artworks?page=${data.pagination.prev_url}&fields=id,title,image_id,artist_title`;
 			paginaAnterior = data.pagination.current_page;
-			ultimaPagina = `https://api.artic.edu/api/v1/artworks?page=${data.pagination.total_pages}&fields=id,title,image_id,artist_title`;
+			ultimaPagina = `https://api.artic.edu/api/v1/artworks?page=${data.pagination.total_pages}&fields=id,title,image_id,artist_title,`;
 			resultados(data.pagination.total);
 			let elementosOrdenados = ordenarAZ(respuesta);
 			mostrarObras(elementosOrdenados);
@@ -157,7 +158,7 @@ const buscarObrasConOtroFetch = (data) => {
 	for (let i = 0; i < respuesta.length; i++) {
 		const element = respuesta[i];
 		fetch(
-			`https://api.artic.edu/api/v1/artworks/${element.id}?fields=,title,image_id,artist_title,id`
+			`https://api.artic.edu/api/v1/artworks/${element.id}?fields=,title,image_id,artist_title,id,date_start`
 		)
 			.then((res) => res.json())
 			.then((data) => {
@@ -237,7 +238,12 @@ const filtrarYOrdenar = () => {
 		mostrarObras(ordenarAZ(elementos, "autor"));
 	} else if (filtrarTipo === "autor" && ordenar === "z-a") {
 		mostrarObras(ordenarZA(elementos, "autor"));
+	}else if (filtrarTipo === "titulo" && ordenar === "obras-recientes") {
+		mostrarObras(masRecientes(elementos, "titulo"));
+	} else if (filtrarTipo === "autor" && ordenar === "obras-recientes") {
+		mostrarObras(masRecientes(elementos, "autor"));
 	}
+	console.log(elementos);
 };
 //cambiar aca tambien por el nombre de la nueva funcion
 ordenar.addEventListener("change", filtrarYOrdenar);
@@ -298,4 +304,28 @@ const ordenarZA = (elementos, ordenarPor) => {
 	// Voy a hacer la logica que agarre elementos y los ordene, dejando el mismo formato, cuando estan ordenados
 	// y tienen el mismo formato hago:
 	return elementosOrdenados;
+};
+
+const masRecientes = (elementos, ordenarPor) => {
+	const elementosOrdenados = elementos.sort((ordenPrimero, ordenSegundo) => {
+		let ordenarPrimeraFecha = 0;
+		let ordenarSegundaFecha = 0;
+		if (ordenarPor == "titulo") {
+			ordenarPrimeraFecha = ordenPrimero.date_start;
+			ordenarSegundaFecha = ordenSegundo.date_start;
+		} else if (ordenarPor == "autor") {
+			ordenarPrimeraFecha = ordenPrimero.date_start;
+			ordenarSegundaFecha = ordenSegundo.date_start;
+		}
+		if (ordenarSegundaFecha < ordenarPrimeraFecha) {
+			return -1;
+		}
+		if (ordenarSegundaFecha > ordenarPrimeraFecha) {
+			return 1;
+		}
+		return 0;
+	
+	});
+	return elementosOrdenados;
+	
 };
