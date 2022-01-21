@@ -157,7 +157,6 @@ img {
 		display: flex;
 		.info-obra {
 			display: flex;
-			width: 900px;
 			flex-direction: column;
 			margin-left: 30px;
 			.div-parrafo {
@@ -258,7 +257,7 @@ img {
 		@include flex-center();
 	}
 	.div-parrafo {
-		width: 400px;
+		width: 3500px;
 		height: 100px;
 		justify-content: center;
 	}
