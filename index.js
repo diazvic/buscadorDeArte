@@ -50,8 +50,8 @@ const mostrarDetalleObra = (data) => {
 		</button>
 		<div class= "imagen">
       <img src="https://www.artic.edu/iiif/2/${
-				data.image_id
-			}/full/843,/0/default.jpg" alt="">
+			data.image_id
+		}/full/843,/0/default.jpg" alt="">
     </div>
 		<div class="info-obra">
 			<h3>Año:${data.date_start}</h3>
@@ -240,7 +240,11 @@ const filtrarYOrdenar = () => {
 		mostrarObras(ordenarAZ(elementos, "autor"));
 	} else if (filtrarTipo === "autor" && ordenar === "z-a") {
 		mostrarObras(ordenarZA(elementos, "autor"));
-	}else if (filtrarTipo === "titulo" && ordenar === "obras-recientes") {
+	} else if (filtrarTipo === "titulo" && ordenar === "obras-antiguas") {
+		mostrarObras(masAntiguas(elementos, "titulo"));
+	} else if (filtrarTipo === "autor" && ordenar === "obras-antiguas") {
+		mostrarObras(masAntiguas(elementos, "autor"));
+	} else if (filtrarTipo === "titulo" && ordenar === "obras-recientes") {
 		mostrarObras(masRecientes(elementos, "titulo"));
 	} else if (filtrarTipo === "autor" && ordenar === "obras-recientes") {
 		mostrarObras(masRecientes(elementos, "autor"));
@@ -308,7 +312,7 @@ const ordenarZA = (elementos, ordenarPor) => {
 	return elementosOrdenados;
 };
 
-const masRecientes = (elementos, ordenarPor) => {
+const masAntiguas = (elementos, ordenarPor) => {
 	const elementosOrdenados = elementos.sort((ordenPrimero, ordenSegundo) => {
 		let ordenarPrimeraFecha = 0;
 		let ordenarSegundaFecha = 0;
@@ -326,8 +330,28 @@ const masRecientes = (elementos, ordenarPor) => {
 			return 1;
 		}
 		return 0;
-	
 	});
 	return elementosOrdenados;
-	
+};
+
+const masRecientes = (elementos, ordenarPor) => {
+	const elementosOrdenados = elementos.sort((ordenPrimero, ordenSegundo) => {
+		let ordenarPrimeraFecha = 0;
+		let ordenarSegundaFecha = 0;
+		if (ordenarPor == "titulo") {
+			ordenarPrimeraFecha = ordenPrimero.date_start;
+			ordenarSegundaFecha = ordenSegundo.date_start;
+		} else if (ordenarPor == "autor") {
+			ordenarPrimeraFecha = ordenPrimero.date_start;
+			ordenarSegundaFecha = ordenSegundo.date_start;
+		}
+		if (ordenarPrimeraFecha < ordenarSegundaFecha) {
+			return -1;
+		}
+		if (ordenarPrimeraFecha > ordenarSegundaFecha) {
+			return 1;
+		}
+		return 0;
+	});
+	return elementosOrdenados;
 };
