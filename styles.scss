@@ -1,12 +1,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100&family=Quicksand&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@200;600&display=swap");
 @import "_variables";
+@import "_botones";
 @mixin flex-center {
 	display: flex;
 	justify-content: center;
 	align-items: center;
 }
-
 * {
 	margin: 0;
 	box-sizing: border-box;
@@ -63,14 +63,6 @@ form {
 			font-size: 15px;
 			color: black;
 		}
-	}
-	.boton-buscar {
-		width: 60px;
-		height: 30px;
-		border: transparent;
-		border-radius: 15px;
-		color: white;
-		background-color: black;
 	}
 }
 
@@ -138,18 +130,7 @@ img {
 	background-color: #121212;
 	@include flex-center();
 }
-.botones-flecha {
-	padding: 10px;
-	margin: 10px;
-	background-color: #8ca1a5;
-	border: none;
-	font-size: 20px;
-	width: 40px;
-	height: 40px;
-}
-.botones-flecha:hover {
-	background-color: $color-principal;
-}
+
 .icono-paginado {
 	color: white;
 }
@@ -173,7 +154,6 @@ img {
 			flex-direction: column;
 			margin-left: 30px;
 			.div-parrafo {
-				width: 900px;
 				height: 300px;
 				display: flex;
 				overflow-y: auto;
@@ -188,15 +168,6 @@ img {
 	background-color: $color-principal;
 	color: #fff8f3;
 	height: 50px;
-}
-.boton-volver-atras {
-	border: none;
-	width: 20px;
-	height: 20px;
-	margin-right: 5px;
-	position: relative;
-	bottom: 50px;
-	left: 10px;
 }
 .section-principal {
 	width: 100%;
@@ -228,9 +199,6 @@ img {
 		width: 60%;
 		overflow: hidden;
 	}
-	// .imagen-card {
-	// 	overflow: hidden;
-	// }
 	.nav {
 		display: flex;
 		flex-direction: column;
@@ -241,7 +209,7 @@ img {
 	form {
 		height: 200px;
 		flex-direction: column;
-		margin-top: 20px;
+		margin: 20px 0px 20px 0px;
 		.busqueda {
 			width: 400px;
 			margin-bottom: 15px;
@@ -250,29 +218,28 @@ img {
 			width: 400px;
 			margin-bottom: 20px;
 			display: flex;
-			// flex-direction: row;
 		}
 	}
 	.boton-buscar {
 		position: relative;
-		left: 150px;
+		right: 15px;
 	}
 	.parrafo-footer {
 		height: 30%;
 		width: 100%;
 	}
 	.imagen {
-		height: 600px;
+		width: 700px;
+		height: 270px;
 		overflow: hidden;
 		margin-bottom: 15px;
-		width: 300px;
+		position: relative;
+		left: 120px;
+		top: 20px;
 	}
 	.obra-detalle {
 		height: 500px;
 		width: 500px;
-		display: flex;
-		align-items: center;
-		flex-direction: column;
 		overflow: hidden;
 	}
 	.info-obra {
@@ -280,10 +247,12 @@ img {
 		height: 200px;
 		text-align: center;
 		font-size: 12px;
+		position: relative;
+		top: 300px;
+		right:110px;
 	}
 	.boton-volver-atras {
 		position: relative;
 		top: 20px;
-		left: 200px;
 	}
 }

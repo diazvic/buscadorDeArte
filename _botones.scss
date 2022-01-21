@@ -1,0 +1,30 @@
+.boton-buscar {
+		width: 60px;
+		height: 30px;
+		border: transparent;
+		border-radius: 15px;
+		color: white;
+		background-color: black;
+	}
+
+  .botones-flecha {
+	padding: 10px;
+	margin: 10px;
+	background-color: #8ca1a5;
+	border: none;
+	font-size: 20px;
+	width: 40px;
+	height: 40px;
+}
+.botones-flecha:hover {
+	background-color: $color-principal;
+}
+.boton-volver-atras {
+	border: none;
+	width: 20px;
+	height: 20px;
+	margin-right: 5px;
+	position: relative;
+	bottom: 50px;
+	left: 10px;
+}
