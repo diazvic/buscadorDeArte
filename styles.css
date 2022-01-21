@@ -349,7 +349,6 @@ img {
         -ms-flex-direction: column;
             flex-direction: column;
     margin: 20px 0px 20px 0px;
-    background-color: chartreuse;
   }
   form .busqueda {
     width: 400px;
@@ -371,10 +370,10 @@ img {
     width: 100%;
   }
   .imagen {
+    width: 700px;
     height: 270px;
     overflow: hidden;
     margin-bottom: 15px;
-    width: 700px;
     position: relative;
     left: 120px;
     top: 20px;
