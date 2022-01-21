@@ -221,12 +221,12 @@ botonUltimaPagina.onclick = () => {
 	buscarObrasPorPagina(inputBusqueda.value, accObras);
 };
 
-const ordenarTodo = () => {
+//cambiar esta funcion por filtrarYOrdenar, consultar con yani
+const filtrarYOrdenar = () => {
 	const ordenar = document.getElementById("ordenar").value; // Puede valer a-z o z-a
 	const filtrarTipo = document.getElementById("obras").value; // Puede valer titulo o autor
 	let elementos = respuesta;
 	console.log("ordenar");
-
 	if (filtrarTipo === "titulo" && ordenar === "a-z") {
 		mostrarObras(ordenarAZ(elementos, "titulo"));
 	} else if (filtrarTipo === "titulo" && ordenar === "z-a") {
@@ -237,9 +237,9 @@ const ordenarTodo = () => {
 		mostrarObras(ordenarZA(elementos, "autor"));
 	}
 };
-
-ordenar.addEventListener("change", ordenarTodo);
-filtrarTipo.addEventListener("change", ordenarTodo);
+//cambiar aca tambien por el nombre de la nueva funcion
+ordenar.addEventListener("change", filtrarYOrdenar);
+filtrarTipo.addEventListener("change", filtrarYOrdenar);
 
 const ordenarAZ = (elementos, ordenarPor) => {
 	console.log("ordenarAZ");
