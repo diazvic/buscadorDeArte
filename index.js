@@ -8,7 +8,7 @@ const inputBusqueda = document.getElementById("input-busqueda");
 const botonBuscar = document.getElementById("boton-buscar");
 const divContenedor = document.querySelector(".div-contenedor");
 const divDetalleObra = document.querySelector(".div-contenedor-detalle");
-
+const divContador = document.getElementById("div-contador");
 const ordenar = document.getElementById("ordenar");
 
 const filtrarTipo = document.getElementById("obras");
@@ -39,6 +39,7 @@ const detalleObras = (id) => {
 const mostrarDetalleObra = (data) => {
 	console.log("mostrarDetalleObra");
 	divContenedor.style.display = "none";
+	divContador.style.display = "none";
 	divDetalleObra.style.display = "flex";
 	divDetalleObra.innerHTML = `
 <div class="obra-detalle">
@@ -68,6 +69,7 @@ const mostrarDetalleObra = (data) => {
 	botonVolverAtras.onclick = () => {
 		divContenedor.style.display = "flex";
 		divDetalleObra.style.display = "none";
+		divContador.style.display = "flex";
 	};
 };
 
