@@ -48,8 +48,8 @@ const mostrarDetalleObra = (data) => {
 		</button>
 		<div class= "imagen">
       <img src="https://www.artic.edu/iiif/2/${
-			data.image_id
-		}/full/843,/0/default.jpg" alt="">
+				data.image_id
+			}/full/843,/0/default.jpg" alt="">
     </div>
 		<div class="info-obra">
 			<h3>Año:${data.date_start}</h3>
@@ -86,7 +86,6 @@ const setClick = () => {
 
 const mostrarObras = (respuesta) => {
 	console.log("mostrarObras");
-	console.log(respuesta);
 	const divContenedor = document.querySelector(".div-contenedor");
 	const htmlCards = respuesta.reduce((acc, curr) => {
 		return (
@@ -123,8 +122,7 @@ const llamarApi = (url) => {
 			paginaAnterior = data.pagination.current_page;
 			ultimaPagina = `https://api.artic.edu/api/v1/artworks?page=${data.pagination.total_pages}&fields=id,title,image_id,artist_title&limit=10`;
 			resultados(data.pagination.total);
-			let elementosOrdenados = ordenarAZ(respuesta);
-			mostrarObras(elementosOrdenados);
+			filtrarYOrdenar();
 		});
 };
 
@@ -144,7 +142,7 @@ botonUltimaPagina.onclick = () => {
 };
 
 const buscarObrasConOtroFetch = (data) => {
-	console.log("buscarObrasConOtroFetch", data);
+	console.log("buscarObrasConOtroFetch");
 	respuesta = data.data;
 	let busquedaObras = [];
 	for (let i = 0; i < respuesta.length; i++) {
@@ -154,12 +152,10 @@ const buscarObrasConOtroFetch = (data) => {
 		)
 			.then((res) => res.json())
 			.then((data) => {
-				console.log(
-					"https://api.artic.edu/api/v1/artworks/${element.id}?fields=,title,image_id,artist_title,id"
-				);
 				busquedaObras.push(data.data);
 				if (busquedaObras.length == 10) {
-					mostrarObras(ordenarAZ(busquedaObras));
+					respuesta = busquedaObras;
+					filtrarYOrdenar();
 				}
 			});
 	}
@@ -171,6 +167,7 @@ const buscarObras = (busqueda) => {
 		.then((res) => res.json())
 		.then((data) => {
 			offsetUltimaPagina = data.pagination.total - 10;
+			resultados(data.pagination.total);
 			buscarObrasConOtroFetch(data);
 		});
 };
@@ -188,9 +185,7 @@ let accObras = 0;
 
 const buscarObrasPorPagina = (busqueda, acumulador) => {
 	console.log("buscarObrasPorPagina");
-	console.log(
-		`https://api.artic.edu/api/v1/artworks/search?q=${busqueda}&from=${acumulador}`
-	);
+
 	fetch(
 		`https://api.artic.edu/api/v1/artworks/search?q=${busqueda}&from=${acumulador}`
 	)
@@ -242,7 +237,7 @@ const filtrarYOrdenar = () => {
 	const ordenar = document.getElementById("ordenar").value; // Puede valer a-z o z-a
 	const filtrarTipo = document.getElementById("obras").value; // Puede valer titulo o autor
 	let elementos = respuesta;
-	console.log("ordenar", respuesta);
+	console.log("ordenar");
 	if (filtrarTipo === "titulo" && ordenar === "a-z") {
 		mostrarObras(ordenarAZ(elementos, "titulo"));
 	} else if (filtrarTipo === "titulo" && ordenar === "z-a") {
@@ -316,4 +311,3 @@ const resultados = (total) => {
 	const contadorResultados = document.getElementById("contador-resultados");
 	contadorResultados.innerHTML = total;
 };
-
