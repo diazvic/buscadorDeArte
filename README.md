@@ -1,6 +1,6 @@
 # Buscador de Arte 📌
 
-Este proyecto se llevo a cabo a partir de los conocimientos adquiridos en el Módulo seis del curso Ada Itw.
+Este proyecto se llevó a cabo a partir de los conocimientos adquiridos en el Módulo seis del curso Ada Itw.
 
 ## Construido con:
 
@@ -29,4 +29,4 @@ Este proyecto se llevo a cabo a partir de los conocimientos adquiridos en el Mó
 - [Ir al proyecto](https://diazvic.github.io/buscadorDeArte/)
 - [Ir al proyecto :grin:](https://buscadordearte.netlify.app)
 
-Realizado con ❤️ **Yani y Vicky** :two_women_holding_hands:
+Realizado con ❤️ por **Yani y Vicky** :two_women_holding_hands:
