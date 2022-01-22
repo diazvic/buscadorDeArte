@@ -37,7 +37,6 @@ const detalleObras = (id) => {
 };
 
 const mostrarDetalleObra = (data) => {
-	console.log("mostrarDetalleObra");
 	divContenedor.style.display = "none";
 	divContador.style.display = "none";
 	divDetalleObra.style.display = "flex";
@@ -85,7 +84,6 @@ const setClick = () => {
 };
 
 const mostrarObras = (respuesta) => {
-	console.log("mostrarObras");
 	const divContenedor = document.querySelector(".div-contenedor");
 	const htmlCards = respuesta.reduce((acc, curr) => {
 		return (
@@ -112,7 +110,6 @@ const mostrarObras = (respuesta) => {
 };
 
 const llamarApi = (url) => {
-	console.log("llamarApi");
 	fetch(url)
 		.then((res) => res.json())
 		.then((data) => {
@@ -128,21 +125,7 @@ const llamarApi = (url) => {
 
 llamarApi(urlInicial);
 
-botonPrimeraPagina.onclick = () => {
-	llamarApi(primeraPagina);
-};
-botonPaginaAnterior.onclick = () => {
-	llamarApi(paginaAnterior);
-};
-botonProximaPagina.onclick = () => {
-	llamarApi(nextUrl);
-};
-botonUltimaPagina.onclick = () => {
-	llamarApi(ultimaPagina);
-};
-
 const buscarObrasConOtroFetch = (data) => {
-	console.log("buscarObrasConOtroFetch");
 	respuesta = data.data;
 	let busquedaObras = [];
 	for (let i = 0; i < respuesta.length; i++) {
@@ -162,7 +145,6 @@ const buscarObrasConOtroFetch = (data) => {
 };
 let offsetUltimaPagina = 0;
 const buscarObras = (busqueda) => {
-	console.log("buscarObras");
 	fetch(`https://api.artic.edu/api/v1/artworks/search?q=${busqueda}`)
 		.then((res) => res.json())
 		.then((data) => {
@@ -184,8 +166,6 @@ botonBuscar.onclick = (e) => {
 let accObras = 0;
 
 const buscarObrasPorPagina = (busqueda, acumulador) => {
-	console.log("buscarObrasPorPagina");
-
 	fetch(
 		`https://api.artic.edu/api/v1/artworks/search?q=${busqueda}&from=${acumulador}`
 	)
@@ -196,7 +176,6 @@ const buscarObrasPorPagina = (busqueda, acumulador) => {
 };
 //onclicks del paginado
 botonProximaPagina.onclick = () => {
-	console.log("botonProximaPagina");
 	if (busquedaGlobal == false) {
 		llamarApi(nextUrl);
 	} else if (busquedaGlobal == true) {
@@ -206,7 +185,6 @@ botonProximaPagina.onclick = () => {
 };
 
 botonPaginaAnterior.onclick = () => {
-	console.log("botonPaginaAnterior");
 	if (busquedaGlobal == false) {
 		llamarApi(prevUrl);
 	} else if (busquedaGlobal == true) {
@@ -218,7 +196,6 @@ botonPaginaAnterior.onclick = () => {
 };
 
 botonPrimeraPagina.onclick = () => {
-	console.log("botonPrimeraPagina");
 	if (busquedaGlobal == true) {
 		accObras = 0;
 		buscarObrasPorPagina(inputBusqueda.value, accObras);
@@ -226,7 +203,6 @@ botonPrimeraPagina.onclick = () => {
 };
 
 botonUltimaPagina.onclick = () => {
-	console.log("botonUltimaPagina");
 	if (busquedaGlobal == true) {
 		accObras = offsetUltimaPagina;
 		buscarObrasPorPagina(inputBusqueda.value, accObras);
@@ -234,10 +210,9 @@ botonUltimaPagina.onclick = () => {
 };
 
 const filtrarYOrdenar = () => {
-	const ordenar = document.getElementById("ordenar").value; // Puede valer a-z o z-a
-	const filtrarTipo = document.getElementById("obras").value; // Puede valer titulo o autor
+	const ordenar = document.getElementById("ordenar").value;
+	const filtrarTipo = document.getElementById("obras").value;
 	let elementos = respuesta;
-	console.log("ordenar");
 	if (filtrarTipo === "titulo" && ordenar === "a-z") {
 		mostrarObras(ordenarAZ(elementos, "titulo"));
 	} else if (filtrarTipo === "titulo" && ordenar === "z-a") {
@@ -252,7 +227,6 @@ ordenar.addEventListener("change", filtrarYOrdenar);
 filtrarTipo.addEventListener("change", filtrarYOrdenar);
 
 const ordenarAZ = (elementos, ordenarPor) => {
-	console.log("ordenarAZ");
 	const elementosOrdenados = elementos.sort((ordenPrimero, ordenSegundo) => {
 		let ordenarPrimeraPalabra = "";
 		let ordenarSegundaPalabra = "";
@@ -264,23 +238,18 @@ const ordenarAZ = (elementos, ordenarPor) => {
 			ordenarSegundaPalabra = ordenSegundo.artist_title.toLowerCase();
 		}
 		if (ordenarPrimeraPalabra < ordenarSegundaPalabra) {
-			//esto seria si a es menor q b tiene q estar antes, por eso retorno -1
 			return -1;
 		}
 		if (ordenarPrimeraPalabra > ordenarSegundaPalabra) {
-			//esto seria si a es mayor q b tiene q estar antes, por eso retorno 1
 			return 1;
 		}
 		return 0;
-		//quiere decir q son iguales
 	});
-	// Voy a hacer la logica que agarre elementos y los ordene, dejando el mismo formato, cuando estan ordenados
-	// y tienen el mismo formato hago:
+
 	return elementosOrdenados;
 };
 
 const ordenarZA = (elementos, ordenarPor) => {
-	console.log("ordenarZA");
 	const elementosOrdenados = elementos.sort((ordenPrimero, ordenSegundo) => {
 		let ordenarPrimeraPalabra = "";
 		let ordenarSegundaPalabra = "";
@@ -292,18 +261,13 @@ const ordenarZA = (elementos, ordenarPor) => {
 			ordenarSegundaPalabra = ordenSegundo.artist_title.toLowerCase();
 		}
 		if (ordenarSegundaPalabra < ordenarPrimeraPalabra) {
-			//esto seria si a es menor q b tiene q estar antes, por eso retorno -1
 			return -1;
 		}
 		if (ordenarSegundaPalabra > ordenarPrimeraPalabra) {
-			//esto seria si a es mayor q b tiene q estar antes, por eso retorno 1
 			return 1;
 		}
 		return 0;
-		//quiere decir q son iguales
 	});
-	// Voy a hacer la logica que agarre elementos y los ordene, dejando el mismo formato, cuando estan ordenados
-	// y tienen el mismo formato hago:
 	return elementosOrdenados;
 };
 
