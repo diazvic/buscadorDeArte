@@ -1,3 +1,5 @@
+// Es mejor importar las tipografias en el html, ya que su carga es mas rapida alli 
+
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100&family=Quicksand&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@200;600&display=swap");
 @import "_variables";
@@ -53,6 +55,7 @@ form {
 		font-weight: bold;
 		padding: 20px;
 		display: flex;
+		// no dejen codigo comentado en una entrega
 		// flex-direction: row;
 		justify-content: space-evenly;
 		select {

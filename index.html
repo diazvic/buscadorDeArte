@@ -5,13 +5,17 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Buscador de Arte</title>
+		  <!-- debe estar en la carpeta principal, no en assets, llamarse favicon, y el link asi:
+			<link rel="icon" type="image/ico" href="favicon.ico"> -->
 		<link rel="icon" href="./assets/galeria-de-arte.ico" />
 	</head>
+	<!-- Ojo!! estos dos links estan afuera de head!! -->
 	<link rel="stylesheet" href="styles.css" />
 	<script
 		src="https://kit.fontawesome.com/2b0ee45a2e.js"
 		crossorigin="anonymous"
 	></script>
+
 	<body>
 		<nav>
 			<div class="titulo-principal">
@@ -31,6 +35,7 @@
 			</div>
 			<div class="filtros">
 				<div class="tipo">
+					<!-- No debe ir vacio el for, debe ser igual al id del select.  -->
 					<label for="">TIPO</label>
 					<select name="obras" id="obras">
 						<option value="titulo">Titulo</option>
@@ -38,6 +43,7 @@
 					</select>
 				</div>
 				<div class="orden">
+					<!-- No debe ir vacio el for, debe ser igual al id del select.  -->
 					<label for="">ORDEN</label>
 					<select name="ordenar" id="ordenar">
 						<option value="a-z">A-Z</option>
@@ -56,6 +62,7 @@
 			<div class="div-contenedor"></div>
 			<div class="div-contenedor-detalle"></div>
 			<div class="iconos-flechas">
+				<!-- Los botones que no tienen contenido de texto deben tener un aria-label -->
 				<button class="botones-flecha" id="boton-primera-pagina">
 					<i class="fas fa-angle-double-left icono-paginado"></i>
 				</button>
