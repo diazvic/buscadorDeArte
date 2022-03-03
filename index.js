@@ -3,6 +3,7 @@ const botonPrimeraPagina = document.getElementById("boton-primera-pagina");
 const botonPaginaAnterior = document.getElementById("pagina-anterior");
 const botonProximaPagina = document.getElementById("proxima-pagina");
 const botonUltimaPagina = document.getElementById("ultima-pagina");
+// esta variable nunca se usa 
 const iconoPaginado = document.querySelectorAll(".icono-paginado");
 const inputBusqueda = document.getElementById("input-busqueda");
 const botonBuscar = document.getElementById("boton-buscar");
@@ -20,6 +21,7 @@ let nextUrl = "";
 let prevUrl = "";
 let paginaAnterior = "";
 let ultimaPagina = "";
+// esta variable nunca se usa 
 let primeraPagina =
 	"https://api.artic.edu/api/v1/artworks?page=1&fields=id,title,image_id,artist_title&limit=10";
 let busquedaGlobal = false;
@@ -31,6 +33,7 @@ const detalleObras = (id) => {
 	)
 		.then((res) => res.json())
 		.then((data) => {
+			// falta un const aca 
 			respuestaDetalle = data.data;
 			mostrarDetalleObra(respuestaDetalle);
 		});
@@ -122,10 +125,12 @@ const llamarApi = (url) => {
 			filtrarYOrdenar();
 		});
 };
-
+// estas funciones, que se ejecutan apenas carga la web, deberian estar siempre 
+// al final de todo, para que el flujo de ejecucion sea mas facil de seguir
 llamarApi(urlInicial);
 
 const buscarObrasConOtroFetch = (data) => {
+	// falta un const aca 
 	respuesta = data.data;
 	let busquedaObras = [];
 	for (let i = 0; i < respuesta.length; i++) {
@@ -143,6 +148,7 @@ const buscarObrasConOtroFetch = (data) => {
 			});
 	}
 };
+// deberia ir arriba con las demas variables globales 
 let offsetUltimaPagina = 0;
 const buscarObras = (busqueda) => {
 	fetch(`https://api.artic.edu/api/v1/artworks/search?q=${busqueda}`)
@@ -156,6 +162,8 @@ const buscarObras = (busqueda) => {
 
 botonBuscar.onclick = (e) => {
 	e.preventDefault();
+	// mejor asi:
+	// if (!inputBusqueda.value) {
 	if (inputBusqueda.value == "") {
 		return;
 	}
@@ -163,6 +171,7 @@ botonBuscar.onclick = (e) => {
 	buscarObras(inputBusqueda.value);
 };
 
+// deberia ir arriba de todo
 let accObras = 0;
 
 const buscarObrasPorPagina = (busqueda, acumulador) => {
